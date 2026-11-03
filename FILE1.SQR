@@ -1,0 +1,27 @@
+Begin-Program
+   Let $FileName = 'C:\Users\lkmuser\Desktop\SQR\STUDENT.DAT'
+   Open $FileName as #1 For-Writing Record=100 Status=#OpenStat
+   If #OpenStat <> 0
+      Show 'Error Opening File'
+   Else
+      Do Process_Student
+      Close #1
+   End-If
+End-Program
+
+Begin-Procedure Process_Student 
+   Begin-Select
+STUDENT_ID     &STUDENTID
+STUDENT_NAME   &STUDENTNAME
+      Do Write-Output-Record
+   From PS_STUDENT_RECORD
+   End-Select
+End-Procedure
+Begin-Procedure Write-Output-Record
+   ! Convert database fields to string variables first
+   Let $StudID   = &STUDENTID
+   Let $StudName = &STUDENTNAME
+   ! Now safely combine the string variables and comma
+   Let $OutLine  = $StudID || ',' || $StudName
+   Write #1 From $OutLine
+End-Procedure

@@ -1,0 +1,14 @@
+#include 'common.sqc'
+Begin-Heading 5
+   Print 'Student Report' (1,1)
+   Print 'Student ID'     (3,1)
+   Print 'Student Name'   (3,20)
+End-Heading
+ 
+Begin-Program
+   Do Main
+End-Program
+ 
+Begin-Procedure Main
+   Do Print-Student-Data
+End-Procedure

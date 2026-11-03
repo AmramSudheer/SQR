@@ -1,0 +1,11 @@
+Begin-Procedure Print-Student-Data
+   Begin-Select
+STUDENT_ID   &STUDENT_ID
+STUDENT_NAME &STUDENT_NAME
+ 
+
+      Print &STUDENT_ID   (+1,1)
+      Print &STUDENT_NAME (,20)
+  	From PS_STUDENT_RECORD
+   End-Select
+End-Procedure

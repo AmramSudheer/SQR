@@ -1,0 +1,15 @@
+Begin-procedure print-student-data
+	begin-select
+		STUDENT_ID	&StudentId
+		STUDENT_NAME	&StudentName
+		
+
+		do print-data
+		from ps_student_record
+	end-select
+end-procedure
+
+begin-procedure print-data
+	print &StudentId  (+1,1)
+	print &StudentName (,20)
+end-procedure

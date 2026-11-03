@@ -1,0 +1,45 @@
+! Comment or uncomment the line below to toggle debug mode
+#define DEBUG_MODE
+ 
+Begin-Heading 5
+   Print 'Student Listing Report' (1,1)
+   Print 'Student ID'             (3,1)
+   Print 'Student Name'           (3,20)
+   print 'Student Email'	(3,30)
+	print 'Student College'	(3,40)
+	print 'Student Department' (3,50)	
+End-Heading
+ 
+Begin-Program
+   Do Main
+End-Program
+ 
+Begin-Procedure Main
+ 
+   #ifdef DEBUG_MODE2
+      Show 'DEBUG: Starting student report execution...'
+   #else
+      Show 'Running report in production mode.'
+   #end-if
+ 
+   Begin-Select
+STUDENT_ID     &STUDENTID
+STUDENT_NAME   &STUDENTNAME
+STUDENT_EMAIL	&STUDENTEMAIL
+STUDENT_COLLEGE	&STUDENTCOLLEGE
+STUDENT_DEPARTMNET &STUDENTDEPARTMNET
+ 
+      Print &STUDENTID   (+1,1)
+      Print &STUDENTNAME (,20)
+	print &STUDENTEMAIL (,30)
+	print &STUDENTCOLLEGE (,40)
+	print &STUDENTDEPARTMNET (,50)
+ 
+   From PS_STUDENT_RECORD
+   End-Select
+ 
+   #ifdef DEBUG_MODE
+      Show 'DEBUG: Student report completed successfully.'
+   #end-if
+ 
+End-Procedure

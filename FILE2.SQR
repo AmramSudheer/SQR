@@ -1,0 +1,18 @@
+Begin-Program
+   Let $FileName = 'C:\Users\lkmuser\Desktop\SQR\STUDENT.DAT'
+   ! Open the file in For-Appending mode
+   Open $File1 as #1 For-Appending Record=100 Status=#OpenStat
+   If #OpenStat <> 0
+      Show 'Error Opening File for Appending'
+   Else
+      Do Append_Student_Record
+      Close #1
+      Show 'New record successfully appended.'
+   End-If
+End-Program
+Begin-Procedure Append_Student_Record
+   ! Prepare your new record line
+   Let $NewRecord = 'S1003,Bob Johnson'
+   ! Write will now add this line to the very end of the file
+   Write #1 From $NewRecord
+End-Procedure

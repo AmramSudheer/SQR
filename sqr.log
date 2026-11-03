@@ -1,0 +1,11 @@
+(SQR 5528) ORACLE OCIStmtExecute error 942 in cursor 1:
+   ORA-00942: table or view does not exist
+SQL:  SELECT CUSTOMER_ID, CUSTOMER_NAME  From PS_CUSTOMER_RECORD 
+
+Error on line 27:
+   (SQR 3716) Error in SQL statement.
+
+
+Errors were found in the program file.
+
+SQR for PeopleSoft: Program Aborting.

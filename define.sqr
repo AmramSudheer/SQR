@@ -1,0 +1,29 @@
+#define Table_Name PS_CUSTOMER_RECORD
+#define REPORT_TITLE  'Customer Report'
+#define COL_ID        1
+#define COL_NAME      20
+
+
+Begin-Heading 5
+   Print {REPORT_TITLE} (1,1)
+   Print 'Customer ID'     (3,{COL_ID})
+   Print 'Customer Name'   (3,{COL_NAME})
+End-Heading
+ 
+Begin-Program
+   Do Create-Report
+End-Program
+ 
+Begin-Procedure Create-Report
+ 
+   Begin-Select
+CUSTOMER_ID     &CUSTOMERID
+CUSTOMER_NAME   &CUSTOMERNAME
+ 
+       Print &CUSTOMERID   (+1,{COL_ID})
+   	Print &CUSTOMERNAME (,{COL_NAME})
+ 
+   From {Table_Name}
+   End-Select
+ 
+End-Procedure

@@ -1,0 +1,83 @@
+Begin-Setup
+ 
+   Declare-Report STUDENT_RPT
+      Layout = Default
+   End-Declare
+ 
+   Declare-Report NAME_RPT
+      Layout = Default
+   End-Declare
+ 
+   Declare-Report EMAIL_RPT
+	Layout = Default
+   End-Declare
+
+ Declare-Report COLLEGE_RPT
+	Layout = Default
+   End-Declare
+
+ Declare-Report DEPARTMENT_RPT
+	Layout = Default
+   End-Declare
+
+End-Setup
+ 
+! Define separate headings for each report stream
+Begin-Heading 5 For-Reports=(STUDENT_RPT)
+   Print 'Student ID Report' (1,1)
+   Print 'Student ID'        (3,1)
+End-Heading
+ 
+Begin-Heading 5 For-Reports=(NAME_RPT)
+   Print 'Student Name Report' (1,1)
+   Print 'Student Name'        (3,1)
+End-Heading
+ 
+Begin-Heading 5 For-Reports=(EMAIL_RPT)
+   Print 'Student Email Report' (1,1)
+   Print 'Student Email'        (3,1)
+End-Heading
+
+Begin-Heading 5 For-Reports=(COLLEGE_RPT)
+   Print 'Student College Report' (1,1)
+   Print 'Student College'        (3,1)
+End-Heading
+
+Begin-Heading 5 For-Reports=(DEPARTMENT_RPT)
+   Print 'Student Department Report' (1,1)
+   Print 'Student Department'        (3,1)
+End-Heading
+
+
+
+Begin-Program
+   Do Main
+End-Program
+ 
+Begin-Procedure Main
+   Begin-Select
+ 
+STUDENT_ID    &STUDENTID
+STUDENT_NAME  &STUDENTNAME
+STUDENT_EMAIL	&STUDENTEMAIL
+STUDENT_COLLEGE	&STUDENTCOLLEGE
+STUDENT_DEPARTMNET	&STUDENTDEPARTMENT
+ 
+      Use-Report STUDENT_RPT
+      Print &STUDENTID (+1,1)
+ 
+      Use-Report NAME_RPT
+      Print &STUDENTNAME (+1,1)
+
+ 	Use-Report EMAIL_RPT
+      Print &STUDENTEMAIL (+1,1)
+
+ 	Use-Report COLLEGE_RPT
+      Print &STUDENTCOLLEGE (+1,1)
+
+	 Use-Report DEPARTMENT_RPT
+      Print &STUDENTDEPARTMENT (+1,1)
+ 
+   From PS_STUDENT_RECORD
+   End-Select
+End-Procedure
